@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background: #212121;
+  color: #ececec;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  margin-left: 260px;
+  background: #212121;
+  height: 100vh;
+}
+
+/* Split Screen Panels */
+.split-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 1px;
+  background: #4d4d4d;
+}
+
+.input-panel,
+.output-panel {
+  flex: 1;
+  background: #212121;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.input-panel,
+.output-panel {
+  flex: 1;
+  background: #212121;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ececec;
+}
+
+.panel-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.input-textarea-large {
+  width: 100%;
+  height: 100%;
+  background: #2f2f2f;
+  border: 1px solid #4d4d4d;
+  border-radius: 12px;
+  padding: 16px;
+  color: #ececec;
+  font-size: 15px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  line-height: 1.7;
+}
+
+.input-textarea-large:focus {
+  border-color: #10a37f;
+}
+
+.input-textarea-large::placeholder {
+  color: #8e8e8e;
+}
+
+.output-text {
+  color: #ececec;
+  font-size: 15px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.output-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #8e8e8e;
+  font-size: 15px;
+}
+
+.panel-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #2f2f2f;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.submit-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  background: transparent;
+  color: #ececec;
+  border: 1px solid #4d4d4d;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background: #2a2a2a;
+}
+
+/* Simple Line Loader */
+.line-loader-container {
+  width: 100%;
+  height: 3px;
+  background: #2f2f2f;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.line-loader {
+  height: 100%;
+  background: linear-gradient(90deg, #ffffff, #b4b4b4, #ffffff);
+  background-size: 200% 100%;
+  animation: lineLoad 1.5s linear infinite;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes lineLoad {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.loading-text {
+  color: #b4b4b4;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* Stats Section */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+  padding: 16px;
+  background: #2f2f2f;
+  border-radius: 8px;
+  border: 1px solid #4d4d4d;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #10a37f;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #b4b4b4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Scrollbar for panels */
+.panel-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+  background: #4d4d4d;
+  border-radius: 4px;
+}
+
+.panel-content::-webkit-scrollbar-thumb:hover {
+  background: #5e5e5e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .split-container {
+    flex-direction: column;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
