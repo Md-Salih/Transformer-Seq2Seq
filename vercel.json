@@ -1,30 +1,29 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "frontend/dist",
-  "installCommand": "npm install",
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
-      "src": "/api/health",
-      "dest": "/api/health.js"
-    },
-    {
-      "src": "/api/ai-detect",
-      "dest": "/api/ai-detect.js"
-    },
-    {
-      "src": "/api/summarize/stream",
-      "dest": "/api/summarize/stream.js"
-    },
-    {
-      "src": "/api/summarize",
-      "dest": "/api/summarize/index.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/dist/$1"
     }
   ]
 }
